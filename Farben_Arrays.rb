@@ -1,16 +1,23 @@
 farben = ["Kirschrot", "Rot", "Orange", "Pfirsich", "Zitronengelb", "Grün"]
-puts "Nenne mir einer der folgenden Farben: Kirschrot, Rot, Orange, Pfirsich, Zitronengelb oder Grün"
-userinput = gets.strip.capitalize
-puts  "Die Farbe " + userinput + " gefällt mir"
-position = farben.index(userinput)
-linkernachbar_index = position - 1
-if linkernachbar_index < 0
-  puts " ,aber " + userinput + " hat leider keinen linken Nachbarn." #then entfernt, weil nicht auf einer Zeile geschrieben
-else
-  p "Der linke Nachbar von " + userinput + " ist " + farben [linkernachbar_index]
 
+puts "Nenne mir einer der folgenden Farben: Kirschrot, Rot, Orange, Pfirsich, Zitronengelb oder Grün"
+gewaehlte_farbe = gets.strip.capitalize
+
+puts  "Die Farbe #{gewaehlte_farbe} gefällt mir"
+position = farben.index(gewaehlte_farbe)
+
+linkernachbar_index = position - 1
 rechternachbar_index = position + 1
-    if rechternachbar_index > farben.last
-    p "hat keinen rechten Nachbar"
+
+if linkernachbar_index < 0
+  # then entfernt, weil nicht auf einer Zeile geschrieben
+  puts "Aber #{gewaehlte_farbe} hat leider keinen linken Nachbarn."
+else
+  puts "Der linke Nachbar von #{gewaehlte_farbe} ist #{farben[linkernachbar_index]}"
 end
-    end
+
+if rechternachbar_index >= farben.size
+  puts "Und #{gewaehlte_farbe} hat leider keinen rechten Nachbarn."
+else
+  puts "Der rechte Nachbar von #{gewaehlte_farbe} ist #{farben[rechternachbar_index]}"
+end
